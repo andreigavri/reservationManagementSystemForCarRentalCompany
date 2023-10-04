@@ -112,6 +112,8 @@ public class ReservationRepository {
         } catch (final Exception e) {
             if (transaction != null) {
                 transaction.rollback();
+
+
             }
             e.printStackTrace(); // Consider logging the exception instead of printing it.
             return null;
