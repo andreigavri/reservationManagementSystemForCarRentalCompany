@@ -23,21 +23,26 @@ public class Reservation {
     private String endDate;
 
     private int rentingDaysRequested;
-    private double totalRentingCostPrice;
+    private int totalCost;
 
 
+    public Reservation() {
 
-    public Reservation(int iD, int customerID, int carID, String reservationStatus, String reservations, String startDate, String endDate, int rentingDaysRequested, Customer customer, Car car) {
-        this.id= iD;
+    }
+
+    public Reservation(int id, int customerID, int carID, String reservationStatus, String reservations, String startDate, String endDate, int rentingDaysRequested, int totalCost, Customer customer, Car car) {
+        this.id = id;
         this.customerID = customerID;
         this.carID = carID;
         this.reservationStatus = reservationStatus;
         this.reservations = reservations;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.rentingDaysRequested=rentingDaysRequested;
+        this.rentingDaysRequested = rentingDaysRequested;
+        this.totalCost = totalCost;
         this.customer = customer;
         this.car = car;
+
 
     }
 
@@ -47,22 +52,6 @@ public class Reservation {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getRentingDaysRequested() {
-        return rentingDaysRequested;
-    }
-
-    public void setRentingDaysRequested(int rentingDaysRequested) {
-        this.rentingDaysRequested = rentingDaysRequested;
-    }
-
-    public int getiD() {
-        return id;
-    }
-
-    public void setiD(int iD) {
-        this.id = iD;
     }
 
     public int getCustomerID() {
@@ -111,6 +100,22 @@ public class Reservation {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public int getRentingDaysRequested() {
+        return rentingDaysRequested;
+    }
+
+    public void setRentingDaysRequested(int rentingDaysRequested) {
+        this.rentingDaysRequested = rentingDaysRequested;
+    }
+
+    public int getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(int totalCost) {
+        this.totalCost = totalCost;
     }
 
     public Customer getCustomer() {

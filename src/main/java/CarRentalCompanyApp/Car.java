@@ -19,7 +19,7 @@ public class Car {
     private String brand;
     private String model;
     private int yearOfFabrication;
-    private double rentingPrice;
+    private int rentingPrice;
     private boolean availability;
     private int stockUnit;
 
@@ -31,7 +31,7 @@ public class Car {
 
 
 
-    public Car(int id, String brand, String model, int yearOfFabrication, double rentingPrice, boolean availability, int stockUnit, String reservationRecordsTracking, List<Reservation> reservation) {
+    public Car(int id, String brand, String model, int yearOfFabrication, int rentingPrice, boolean availability, int stockUnit, String reservationRecordsTracking, List<Reservation> reservation) {
 
         this.id = id;
         this.brand = brand;
@@ -76,11 +76,11 @@ public class Car {
         this.yearOfFabrication = yearOfFabrication;
     }
 
-    public double getRentingPrice() {
+    public int getRentingPrice() {
         return rentingPrice;
     }
 
-    public void setRentingPrice(double rentingPrice) {
+    public void setRentingPrice(int rentingPrice) {
         this.rentingPrice = rentingPrice;
     }
 

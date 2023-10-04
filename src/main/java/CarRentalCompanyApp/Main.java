@@ -17,10 +17,10 @@ public class Main {
                 .buildSessionFactory();
 
 
-        Car car1 = new Car(1, "BMW", "X6", 2020, 300.20, true, 3, null, null);
-        Car car2 = new Car(2, "BMW", "X3", 2021, 340.50, true, 2, null, null);
-        Car car3 = new Car(3, "AUDI", "A3", 2023, 170.20, true, 4, null, null);
-        Car car4 = new Car(4, "AUDI", "A8", 2023, 190.45, true, 5, null, null);
+        Car car1 = new Car(1, "BMW", "X6", 2020, 300, true, 3, null, null);
+        Car car2 = new Car(2, "BMW", "X3", 2021, 340, true, 2, null, null);
+        Car car3 = new Car(3, "AUDI", "A3", 2023, 170, true, 4, null, null);
+        Car car4 = new Car(4, "AUDI", "A8", 2023, 190, true, 5, null, null);
 
         CarRepository carRepository = new CarRepository(sessionFactory.createEntityManager());
 //        carRepository.saveCarDetails(car1);
@@ -29,13 +29,18 @@ public class Main {
 //        carRepository.saveCarDetails(car4);
 
         ReservationRepository reservationRepository = new ReservationRepository(sessionFactory.createEntityManager());
-        Reservation reservation1 = new Reservation(1, 1, 1, null, null, "10/10/2023", "12/10/2023", 4,null, car1);
-        Reservation reservation2 = new Reservation(2, 2, 1, null, null, "10/10/2023", "12/10/2023", 2,null, car2);
+        Reservation reservation1 = new Reservation(1, 1, 1, null, null, "10/10/2023", "12/10/2023", 4,0, null, car1);
+        Reservation reservation2 = new Reservation(2, 2, 1, null, null, "10/10/2023", "12/10/2023", 2,0, null, car2);
         List<Reservation> reservation = new ArrayList<>();
 //        reservationRepository.saveReservationDetails(reservation1);
 //        reservationRepository.saveReservationDetails(reservation2);
-        reservationRepository.changeReservationStatus(reservation1);
+//        reservationRepository.changeReservationStatus(reservation1);
+//        reservationRepository.rentingCostCalculation(reservation1);
+//        reservationRepository.deleteReservationDetails(reservation1);
+//        reservationRepository.deleteReservationDetails(reservation2);
+//        reservationRepository.changeReservationStatus(reservation1);
         reservationRepository.rentingCostCalculation(reservation1);
+
 
 
 //        reservationRepository.deleteReservationDetails(reservation1);
