@@ -27,3 +27,6 @@ Developed a reservation management system for a Car rental company which allows 
 - Managing conflicts if a car is already reserved for the requested dates.
 - Sending notifications to customers for reservation confirmations, modifications, or cancellations.
 
+si #### Database Schema:
+![db Schema](https://github.com/andreigavri/reservationManagementSystemForCarRentalCompany/blob/2dda34403a1c7129042dbf173e36a5e3d1b419f1/db%20schema.png)
+
