@@ -56,7 +56,6 @@ public class ReservationRepository {
             return null;
         }
     }
-
     public Reservation changeReservationStatus(final Reservation inputReservation) {
         EntityTransaction transaction = null;
         try {

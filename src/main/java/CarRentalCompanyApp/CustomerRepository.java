@@ -52,3 +52,18 @@ public class CustomerRepository {
     }
 }
 
+//    public Customer reservationDetails(final Customer customer){
+//     EntityTransaction transaction = null;
+//     try{
+//         transaction = entityManager.getTransaction();
+//         if(!transaction.isActive()){
+//             transaction.begin();
+//         }
+//
+//         Reservation reservation = entityManager.find(Reservation.class, reservation.);
+//         }
+//     }
+//
+//}
+
+

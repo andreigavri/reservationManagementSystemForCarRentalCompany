@@ -16,15 +16,21 @@ import java.util.List;
 
 
 public class Customer {
+    @Id
+    private int ID;
+    private String firstName;
+    private String lastName;
+    private String address;
+    private int phoneNumber;
 
-    public Customer(int ID, String firstName, String lastName, String address, int phoneNumber, String reservationRecords, List<Reservation> reservation) {
+
+    public Customer(int ID, String firstName, String lastName, String address, int phoneNumber) {
         this.ID = ID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.reservationRecords = reservationRecords;
-        this.reservation = reservation;
+
     }
 
     public int getID() {
@@ -66,30 +72,6 @@ public class Customer {
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    public String getReservationRecords() {
-        return reservationRecords;
-    }
-
-    public void setReservationRecords(String reservationRecords) {
-        this.reservationRecords = reservationRecords;
-    }
-
-    public List<Reservation> getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(List<Reservation> reservation) {
-        this.reservation = reservation;
-    }
-
-    @Id
-    private int ID;
-    private String firstName;
-    private String lastName;
-    private String address;
-    private int phoneNumber;
-    private String reservationRecords;
 
     @OneToMany()
     private List<Reservation> reservation;

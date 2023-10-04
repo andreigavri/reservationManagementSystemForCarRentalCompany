@@ -23,7 +23,6 @@ public class Car {
     private boolean availability;
     private int stockUnit;
 
-    private String reservationRecordsTracking;
 
     public Car (){
 
@@ -31,7 +30,7 @@ public class Car {
 
 
 
-    public Car(int id, String brand, String model, int yearOfFabrication, int rentingPrice, boolean availability, int stockUnit, String reservationRecordsTracking, List<Reservation> reservation) {
+    public Car(int id, String brand, String model, int yearOfFabrication, int rentingPrice, boolean availability, int stockUnit) {
 
         this.id = id;
         this.brand = brand;
@@ -40,8 +39,7 @@ public class Car {
         this.rentingPrice = rentingPrice;
         this.availability = availability;
         this.stockUnit = stockUnit;
-        this.reservationRecordsTracking = reservationRecordsTracking;
-        this.reservation = reservation;
+
     }
 
     public int getId() {
@@ -100,21 +98,6 @@ public class Car {
         this.stockUnit = stockUnit;
     }
 
-    public String getReservationRecordsTracking() {
-        return reservationRecordsTracking;
-    }
-
-    public void setReservationRecordsTracking(String reservationRecordsTracking) {
-        this.reservationRecordsTracking = reservationRecordsTracking;
-    }
-
-    public List<Reservation> getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(List<Reservation> reservation) {
-        this.reservation = reservation;
-    }
     @OneToMany(mappedBy= "car")
     private List<Reservation> reservation;
 
