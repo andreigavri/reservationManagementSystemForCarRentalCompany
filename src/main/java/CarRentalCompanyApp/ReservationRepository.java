@@ -84,8 +84,9 @@ public class ReservationRepository {
         }
     }
 
-    public Reservation rentingCostCalculation(final Reservation reservation) {
+    public int rentingCostCalculation(final Reservation reservation) {
         EntityTransaction transaction = null;
+        int totalCost = 0;
         try {
             transaction = entityManager.getTransaction();
             if (!transaction.isActive()) {
@@ -96,28 +97,22 @@ public class ReservationRepository {
                 //Calculate the renting cost based on car's renting price and days requested
                 int rentingPrice = car.getRentingPrice();
                 int rentingDaysRequested = reservation.getRentingDaysRequested();
-                int totalCost = rentingPrice * rentingDaysRequested;
+                totalCost = rentingPrice * rentingDaysRequested;
 
                 //set the calculated cost in the reservation entity
                 reservation.setTotalCost(totalCost);
-
+                entityManager.merge(reservation);
                 transaction.commit();
-                return reservation;
-            } else {
-                // Handle the case where the car does not exist.
-                // You might want to throw an exception or return an error response.
-                return null;
             }
-
         } catch (final Exception e) {
             if (transaction != null) {
                 transaction.rollback();
-
-
             }
-            e.printStackTrace(); // Consider logging the exception instead of printing it.
-            return null;
+            e.printStackTrace();
         }
+        return totalCost;
     }
 }
+
+
 
