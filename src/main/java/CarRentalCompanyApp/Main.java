@@ -1,6 +1,7 @@
 package CarRentalCompanyApp;
 
 import jakarta.persistence.EntityManager;
+import org.hibernate.Interceptor;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -45,9 +46,9 @@ public class Main {
 //        carRepository.deleteCarDetails(car4);
 
         ReservationRepository reservationRepository = new ReservationRepository(sessionFactory.createEntityManager());
-        Reservation reservation1 = new Reservation(1, 1, 1, null, null, "10/10/2023", "12/10/2023", 4, 0, null, car1);
-        Reservation reservation2 = new Reservation(2, 2, 1, null, null, "10/10/2023", "12/10/2023", 2, 0, null, car2);
-        List<Reservation> reservation = new ArrayList<>();
+        Reservation reservation1 = new Reservation(1, null, null, "10/10/2023", "12/10/2023", 4, 0);
+        Reservation reservation2 = new Reservation(2, null, null, "10/10/2023", "12/10/2023", 2, 0);
+//        List<Reservation> reservation = new ArrayList<>();
 //        reservationRepository.saveReservationDetails(reservation1);
 //        reservationRepository.saveReservationDetails(reservation2);
 //        reservationRepository.changeReservationStatus(reservation1);
@@ -57,7 +58,7 @@ public class Main {
 //        reservationRepository.changeReservationStatus(reservation1);
 //        reservationRepository.rentingCostCalculation(reservation1);
 
-        reservationRepository.deleteReservationDetails(reservation1);
+//        reservationRepository.deleteReservationDetails(reservation1);
 //        reservationRepository.deleteReservationDetails(reservation2);
 
         EntityManager entityManager = sessionFactory.createEntityManager();
@@ -80,9 +81,40 @@ public class Main {
                 String lastName = v[2];
                 String address = v[3];
                 int phoneNumber = Integer.parseInt(v[4]);
-                Customer customer = new Customer(id, firstName, lastName, address,phoneNumber);
+                Customer customer = new Customer(id, firstName, lastName, address, phoneNumber);
                 customerRepository.saveCustomerDetails(customer);
+                break;
 
+            case 2:
+                String car = sc.nextLine();
+                String[] vCar = car.split(" ");
+                int carId = Integer.parseInt(vCar[0]);
+                String brand = vCar[1];
+                String model = vCar[2];
+                int yearOfFabrication = Integer.parseInt((vCar[3]));
+                int rentingPrice = Integer.parseInt(vCar[4]);
+                boolean availability = Boolean.parseBoolean(vCar[5]);
+                int stockUnit = Integer.parseInt(vCar[6]);
+                Car carInput = new Car(carId, brand, model, yearOfFabrication, rentingPrice, availability, stockUnit);
+                carRepository.saveCarDetails(carInput);
+                break;
+
+            case 3:
+                String reservation = sc.nextLine();
+                String[] vReservation = reservation.split(" ");
+                int idReservation = Integer.parseInt(vReservation[0]);
+                String reservationStatus = vReservation[1];
+                String reservations = vReservation[2];
+                String startDate = vReservation[3];
+                String endDate = vReservation[4];
+                int carID = Integer.parseInt(vReservation[5]);
+                int customerID = Integer.parseInt(vReservation[6]);
+                int rentingDayRequested = Integer.parseInt(vReservation[7]);
+                Reservation reservationInput = new Reservation(idReservation, reservationStatus, reservations, startDate, endDate, rentingDayRequested,0);
+                reservationRepository.saveReservationDetails(reservationInput,carID,customerID);
+                int totalCost = reservationRepository.rentingCostCalculation(reservationInput);
+                reservationInput.setTotalCost(totalCost);
+                break;
         }
     }
 }

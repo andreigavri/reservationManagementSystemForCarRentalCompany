@@ -14,16 +14,19 @@ public class ReservationRepository {
     }
 
 
-    public Reservation saveReservationDetails(final Reservation reservation) {
+    public Reservation saveReservationDetails(final Reservation reservation,int carID,int customerID) {
         EntityTransaction transaction = null;
         try {
             transaction = entityManager.getTransaction();
             if (!transaction.isActive()) {
                 transaction.begin();
             }
-            int id = reservation.getCarID();
+            Car car = entityManager.find(Car.class, carID);
+            reservation.setCar(car);
+            Customer customer= entityManager.find(Customer.class, customerID);
+            reservation.setCustomer(customer);
             entityManager.persist(reservation);
-            Car car = entityManager.find(Car.class, id);
+
             car.setAvailability(false);
             entityManager.merge(car);
             transaction.commit();
@@ -91,7 +94,7 @@ public class ReservationRepository {
             if (!transaction.isActive()) {
                 transaction.begin();
             }
-            Car car = entityManager.find(Car.class, reservation.getCarID());
+            Car car = entityManager.find(Car.class, reservation.getCar().getId());
             if (car != null) {
                 //Calculate the renting cost based on car's renting price and days requested
                 int rentingPrice = car.getRentingPrice();

@@ -15,8 +15,6 @@ import lombok.NoArgsConstructor;
 public class Reservation {
     @Id
     private int id;
-    private int customerID;
-    private int carID;
     private String reservationStatus;
     private String reservations;
     private String startDate;
@@ -30,20 +28,31 @@ public class Reservation {
 
     }
 
-    public Reservation(int id, int customerID, int carID, String reservationStatus, String reservations, String startDate, String endDate, int rentingDaysRequested, int totalCost, Customer customer, Car car) {
+    public Reservation(int id, String reservationStatus, String reservations, String startDate, String endDate, int rentingDaysRequested, int totalCost) {
         this.id = id;
-        this.customerID = customerID;
-        this.carID = carID;
         this.reservationStatus = reservationStatus;
         this.reservations = reservations;
         this.startDate = startDate;
         this.endDate = endDate;
         this.rentingDaysRequested = rentingDaysRequested;
         this.totalCost = totalCost;
+
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
         this.car = car;
-
-
     }
 
     public int getId() {
@@ -52,22 +61,6 @@ public class Reservation {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
-
-    public int getCarID() {
-        return carID;
-    }
-
-    public void setCarID(int carID) {
-        this.carID = carID;
     }
 
     public String getReservationStatus() {
@@ -118,21 +111,21 @@ public class Reservation {
         this.totalCost = totalCost;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
+//    public Customer getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
+//
+//    public Car getCar() {
+//        return car;
+//    }
+//
+//    public void setCar(Car car) {
+//        this.car = car;
+//    }
 
     @ManyToOne
     private Customer customer;
