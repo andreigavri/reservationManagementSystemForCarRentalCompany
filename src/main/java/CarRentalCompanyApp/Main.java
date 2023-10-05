@@ -110,11 +110,34 @@ public class Main {
                 int carID = Integer.parseInt(vReservation[5]);
                 int customerID = Integer.parseInt(vReservation[6]);
                 int rentingDayRequested = Integer.parseInt(vReservation[7]);
-                Reservation reservationInput = new Reservation(idReservation, reservationStatus, reservations, startDate, endDate, rentingDayRequested,0);
-                reservationRepository.saveReservationDetails(reservationInput,carID,customerID);
+                Reservation reservationInput = new Reservation(idReservation, reservationStatus, reservations, startDate, endDate, rentingDayRequested, 0);
+                reservationRepository.saveReservationDetails(reservationInput, carID, customerID);
                 int totalCost = reservationRepository.rentingCostCalculation(reservationInput);
                 reservationInput.setTotalCost(totalCost);
+                break;
+            case 4:
+                String imput = sc.nextLine();
+                String[] vCusto = imput.split(" ");
+                int customerId = Integer.parseInt(vCusto[0]);
+                Customer customerDelete = new Customer(customerId);
+                customerRepository.deleteCustomerDetails(customerDelete);
+                break;
+            case 5:
+                String innput = sc.nextLine();
+                String[] vcar = innput.split(" ");
+                int carIDD = Integer.parseInt(vcar[0]);
+                Car carDelete = new Car(carIDD);
+                carRepository.deleteCarDetails(carDelete);
+                break;
+
+            case 6:
+                String inpt = sc.nextLine();
+                String[] vReservations = inpt.split(" ");
+                int idReservations = Integer.parseInt(vReservations[0]);
+                Reservation reservationsDelete = new Reservation(idReservations);
+                reservationRepository.deleteReservationDetails(reservationsDelete);
                 break;
         }
     }
 }
+

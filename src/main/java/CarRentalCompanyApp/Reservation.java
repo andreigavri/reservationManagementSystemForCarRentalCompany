@@ -24,8 +24,8 @@ public class Reservation {
     private int totalCost;
 
 
-    public Reservation() {
-
+    public Reservation(int id) {
+        this.id = id;
     }
 
     public Reservation(int id, String reservationStatus, String reservations, String startDate, String endDate, int rentingDaysRequested, int totalCost) {

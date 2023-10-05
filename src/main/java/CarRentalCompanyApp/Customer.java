@@ -33,6 +33,10 @@ public class Customer {
 
     }
 
+    public Customer(int ID) {
+        this.ID = ID;
+    }
+
     public int getID() {
         return ID;
     }
