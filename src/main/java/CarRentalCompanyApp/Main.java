@@ -115,14 +115,14 @@ public class Main {
                 int totalCost = reservationRepository.rentingCostCalculation(reservationInput);
                 reservationInput.setTotalCost(totalCost);
                 break;
-            case 4:
+            case 4: // delete customer
                 String imput = sc.nextLine();
                 String[] vCusto = imput.split(" ");
                 int customerId = Integer.parseInt(vCusto[0]);
                 Customer customerDelete = new Customer(customerId);
                 customerRepository.deleteCustomerDetails(customerDelete);
                 break;
-            case 5:
+            case 5: // delete car
                 String innput = sc.nextLine();
                 String[] vcar = innput.split(" ");
                 int carIDD = Integer.parseInt(vcar[0]);
@@ -130,7 +130,7 @@ public class Main {
                 carRepository.deleteCarDetails(carDelete);
                 break;
 
-            case 6:
+            case 6: //Delete reservation
                 String inpt = sc.nextLine();
                 String[] vReservations = inpt.split(" ");
                 int idReservations = Integer.parseInt(vReservations[0]);
